@@ -1,28 +1,18 @@
-package com.code.fullstack.backend.entity;
+package com.code.fullstack.backend.dto.response;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-
-@Entity
-public class User {
-
-    @Id
-    @GeneratedValue
+public class ResponseUserDTO {
     private long id;
-    private String username;
     private String name;
+    private String username;
     private String email;
 
-    // no arg constructor
-    public User() {
+    public ResponseUserDTO() {
     }
 
-    //all arg constructor
-    public User(long id, String username, String name, String email) {
+    public ResponseUserDTO(long id, String name, String username, String email) {
         this.id = id;
-        this.username = username;
         this.name = name;
+        this.username = username;
         this.email = email;
     }
 
@@ -34,20 +24,20 @@ public class User {
         this.id = id;
     }
 
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
     public String getName() {
         return name;
     }
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getEmail() {
@@ -60,10 +50,10 @@ public class User {
 
     @Override
     public String toString() {
-        return "User{" +
+        return "ResponseUserDTO{" +
                 "id=" + id +
-                ", username='" + username + '\'' +
                 ", name='" + name + '\'' +
+                ", username='" + username + '\'' +
                 ", email='" + email + '\'' +
                 '}';
     }
