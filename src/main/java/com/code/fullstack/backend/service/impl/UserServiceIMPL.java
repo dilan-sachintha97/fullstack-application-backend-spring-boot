@@ -2,6 +2,7 @@ package com.code.fullstack.backend.service.impl;
 import com.code.fullstack.backend.dto.request.RequestUserDTO;
 import com.code.fullstack.backend.dto.response.ResponseUserDTO;
 import com.code.fullstack.backend.entity.User;
+import com.code.fullstack.backend.exception.UserNotFoundException;
 import com.code.fullstack.backend.repo.UserRepo;
 import com.code.fullstack.backend.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,5 +51,19 @@ public class UserServiceIMPL implements UserService {
         }
 
         return userDTOS;
+    }
+
+    @Override
+    public ResponseUserDTO getUser(long id) {
+        User user = userRepo.findById(id).orElse(null);
+        if (null == user) {
+            throw new UserNotFoundException(id);
+        }
+        return new ResponseUserDTO(
+                user.getId(),
+                user.getName(),
+                user.getUsername(),
+                user.getEmail()
+        );
     }
 }

@@ -10,4 +10,6 @@ public interface UserService {
     ResponseUserDTO saveUser(RequestUserDTO userDTO);
 
     List<ResponseUserDTO> getAllUsers();
+
+    ResponseUserDTO getUser(long id);
 }

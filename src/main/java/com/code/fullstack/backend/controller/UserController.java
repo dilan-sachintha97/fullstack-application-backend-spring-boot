@@ -20,8 +20,13 @@ public class UserController {
        return userService.saveUser(userDTO);
     }
 
-    @GetMapping(value = "all-users")
+    @GetMapping(value = "/all-users")
     public List<ResponseUserDTO> getAllUsers(){
         return userService.getAllUsers();
+    }
+
+    @GetMapping(value = "user/{id}")
+    public ResponseUserDTO getUser(@PathVariable long id){
+        return userService.getUser(id);
     }
 }
