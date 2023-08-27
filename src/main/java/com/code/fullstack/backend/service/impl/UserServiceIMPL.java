@@ -66,4 +66,23 @@ public class UserServiceIMPL implements UserService {
                 user.getEmail()
         );
     }
+
+    @Override
+    public ResponseUserDTO updateUser(RequestUserDTO userDTO, long id) {
+        User user = userRepo.findById(id).orElse(null);
+        if (null == user) {
+            throw new UserNotFoundException(id);
+        }
+
+        user.setUsername(userDTO.getUsername());
+        user.setName(userDTO.getName());
+        user.setEmail(userDTO.getEmail());
+
+        User save = userRepo.save(user);
+
+        return new ResponseUserDTO(
+                save.getId(), save.getName(), save.getUsername(), save.getEmail()
+        );
+
+    }
 }

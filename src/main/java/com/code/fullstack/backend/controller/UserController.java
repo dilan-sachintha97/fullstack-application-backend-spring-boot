@@ -25,8 +25,15 @@ public class UserController {
         return userService.getAllUsers();
     }
 
-    @GetMapping(value = "user/{id}")
+    @GetMapping(value = "/user/{id}")
     public ResponseUserDTO getUser(@PathVariable long id){
         return userService.getUser(id);
     }
+
+    @PutMapping(value = "/update-user/{id}")
+    public ResponseUserDTO updateUser(@RequestBody RequestUserDTO userDTO, @PathVariable long id){
+        return userService.updateUser(userDTO,id);
+    }
+
+
 }

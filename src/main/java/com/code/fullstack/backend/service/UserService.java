@@ -12,4 +12,7 @@ public interface UserService {
     List<ResponseUserDTO> getAllUsers();
 
     ResponseUserDTO getUser(long id);
+
+    ResponseUserDTO updateUser(RequestUserDTO userDTO, long id);
 }
+
