@@ -87,12 +87,12 @@ public class UserServiceIMPL implements UserService {
     }
 
     @Override
-    public ResponseUserDTO deleteUser(long id) {
-        User user = userRepo.findById(id).orElse(null);
-        if (null == user) {
+    public String deleteUser(long id) {
+
+        if (!userRepo.existsById(id)) {
             throw new UserNotFoundException(id);
         }
          userRepo.deleteById(id);
-        return new ResponseUserDTO(user.getId(), user.getName(), user.getUsername(), user.getEmail());
+        return "User with DI "+id+" has been deleted";
     }
 }

@@ -36,7 +36,7 @@ public class UserController {
     }
 
     @DeleteMapping(value = "/delete-user/{id}")
-    public ResponseUserDTO deleteUser(@PathVariable long id){
+    public String deleteUser(@PathVariable long id){
         return userService.deleteUser(id);
     }
 
